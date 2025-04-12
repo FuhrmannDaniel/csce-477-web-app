@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Howdy</title>
+    <style>
+        /* General styling */
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #500000, #ffffff);
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        h1 {
+            font-size: 4rem;
+            color: #500000;
+            text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3);
+            margin-bottom: 20px;
+            animation: fadeIn 2s ease-in-out, float 4s infinite alternate ease-in-out;
+        }
+
+        p {
+            font-size: 1.8rem;
+            color: #333;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            margin-top: 10px;
+            animation: fadeIn 3s ease-in-out;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes float {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* Dynamic background animation */
+        @keyframes backgroundShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        body {
+            background-size: 200% 200%;
+            animation: backgroundShift 15s ease infinite;
+        }
+    </style>
+</head>
+<body>
+    <h1>Howdy, {{ name }}!</h1>
+    <p>Welcome to the Secure Login Demo.</p>
+</body>
+</html>

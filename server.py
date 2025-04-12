@@ -3,22 +3,6 @@ from markupsafe import escape
 import re
 import bcrypt
 
-def hash_password(password: str) -> str:
-    """
-    Hashes a password securely using bcrypt.
-
-    Args:
-        password (str): The plaintext password to hash.
-
-    Returns:
-        str: The hashed password.
-    """
-    # Generate a salt
-    salt = bcrypt.gensalt()
-    # Hash the password with the salt
-    hashed_password = bcrypt.hashpw(password.encode('utf-8'), salt)
-    return hashed_password.decode('utf-8')
-
 def check_password(password: str) -> bool:
     """
     Checks if a given password matches the hashed password.

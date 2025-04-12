@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Secure Login!</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #500000, #7d110c);
+            background-size: 400% 400%;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            animation: gradientAnimation 10s ease infinite;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        form {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            animation: fadeIn 1.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        label {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        input[type="email"], input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0 20px;
+            border: 2px solid #500000;
+            border-radius: 5px;
+            font-size: 1em;
+            transition: border-color 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        input[type="email"]:focus, input[type="password"]:focus {
+            border-color: #7d110c;
+            box-shadow: 0 0 8px rgba(125, 17, 12, 0.8);
+            outline: none;
+        }
+
+        input[type="submit"], input[type="reset"] {
+            background: #500000;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        input[type="submit"]:hover, input[type="reset"]:hover {
+            background: #7d110c;
+        }
+
+        input[type="submit"]:active, input[type="reset"]:active {
+            transform: scale(0.98);
+        }
+
+        input[type="reset"] {
+            background: #7d110c;
+        }
+
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <form action="http://localhost:5000/secureLogin" method="post">
+        <h1>Welcome Back!</h1>
+        <label for="email">Enter your Email:</label>
+        <input type="email" id="email" name="email" placeholder="john.doe@example.com" title="Please enter a valid email address."/>
+
+        <label for="password">Enter your Password:</label>
+        <input type="password" id="password" name="password" placeholder="Password"/>
+
+        <input type="submit" value="Login"/>
+        <input type="reset" value="Reset"/>
+    </form>
+    <script>
+        document.querySelector('form').addEventListener('submit', function(event) {
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+
+            if (!email || !password) {
+                alert('Both email and password are required.');
+                event.preventDefault();
+                return;
+            }
+
+            const emailRegex = /^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$/;
+            if (!emailRegex.test(email)) {
+                alert('Please enter a valid email address.');
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
